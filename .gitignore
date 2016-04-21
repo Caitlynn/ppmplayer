@@ -1,0 +1,4 @@
+*.o
+rlefiles/
+rledecode
+ppmplayer
