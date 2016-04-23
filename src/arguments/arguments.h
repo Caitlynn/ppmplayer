@@ -2,10 +2,9 @@
 #define ARGUMENTS_H
 
 typedef struct Arguments{
-	int delay;
+	unsigned int delay;
 } Arguments;
 
 int validateArguments(Arguments *args, int argc, char **argv);
-
 
 #endif

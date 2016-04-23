@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <SDL.h>
+
 #include "arguments/arguments.h"
 
 int main(int argc, char *argv[]){
@@ -12,10 +14,16 @@ int main(int argc, char *argv[]){
 	}
 	
 	if(stdin == NULL){
-		fprintf(stderr, "rledecode doesn't work properly!\n");
+		fprintf(stderr, "no ppm input!\n");
 		return false;
 	}
-	fprintf(args.delay, "%d\n" );
+
+	FILE *file = fscanf(stdin) 
+
+
+
 	return true;
+
+
 
 }
