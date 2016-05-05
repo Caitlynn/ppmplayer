@@ -24,3 +24,6 @@ clean:
 
 setdebug:
 	$(eval flags := $(flags) -g)
+
+
+	# gcc -I/usr/local/include/SDL2 -o hello hello-pixel.c -lSDL2

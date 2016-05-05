@@ -1,13 +1,9 @@
 /* This program adapted from http://lazyfoo.net/tutorials/SDL/01_hello_SDL */
 /* by Robyn McNamara, April 2016 */
-
+#include <stdio.h>
 #include <SDL.h>
 
-/* Setting up screen size*/
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
-
-int main(int argc, char *argv[]) {
+int setpixel(unsigned int SCREEN_WIDTH, unsigned int SCREEN_HEIGHT) {
 	/* The window to render to */
 	SDL_Window *window = NULL;
 
@@ -47,8 +43,6 @@ int main(int argc, char *argv[]) {
 
 			*p=SDL_MapRGB(screenSurface->format, 0, 0, 0);            
 			SDL_UpdateWindowSurface(window);
-
-
 
 			/* Wait two seconds */
 			SDL_Delay(2000); 
