@@ -1,7 +1,7 @@
 #include "handleFile/headerRead.h"
 #include "arguments/arguments.h"
 #include "handleFile/headerRead.h"
-#include "handleFile/readFiles.h"
+#include "display/makeWindow.h"
 #include "ppmplayer.h"
 #include <stdio.h>
 #include <stdbool.h>

@@ -4,7 +4,7 @@
 #include "makeWindow.h"
 
 int makeWindow(FILE *file, unsigned int Screen_width, unsigned int Screen_height, unsigned int delay){
-	int *p;
+	// int *p;
 	SDL_Window *window = NULL;
 	SDL_Surface *screenSurface = NULL;
 	// const int bitdepth = 8; // 8 bits per channel
@@ -35,28 +35,37 @@ int makeWindow(FILE *file, unsigned int Screen_width, unsigned int Screen_height
 			printf("Window couldn't be created! SDL_Error: %s\n", SDL_GetError());
 		}
 		else {
-			screenSurface = SDL_GetWindowSurface(window);
-			SDL_FillRect(screenSurface, NULL, SDL_MapRGBA(screenSurface->format, 0xff, 0xff, 0xff,0xff));
-		 	
+			screenSurface = SDL_GetWindowSurface(window);		 	
 
-			int pixels = Screen_width*Screen_height;
-			Uint8 red, green, blue;
-			for (size_t i = 0; i < pixels; i++){
-				char c = fgetc(file);
-				red = ((c >>16) & 0xFF);
-				green = ((c >>8) & 0xFF);
-				blue = ((c)&0xFF);
-				p = screenSurface->pixels + Screen_height * screenSurface->pitch + Screen_width *screenSurface->format->BytesPerPixel;
+			size_t pixels = Screen_width*Screen_height;
+			for (int i=0; i<pixels*4; i++){
+				if (i%3 ==0){
+					((unsigned char*)(screenSurface->pixels))[i] = 255;
+				}
+				else{
+					((unsigned char*)(screenSurface->pixels))[i]  = fgetc(file);
+				}
+				
+			}
+			// //read the '-1' at the end of the ppm file
+			// int seperator = 0;
+			// fread(seperator, sizeof(int), 1, file);
 
-				*p = SDL_MapRGBA(screenSurface->format, red, green, blue, 255);
+			// if (seperator == EOF){
+			// 	fprintf(stderr, "unexpected eof\n");
+			// 	return false;
+			// }
+
+			// if (seperator != -1){
+			// 	fprintf(stderr, "the ppm file didn't end with '-1'\n");
+			// 	return false;
 			}
 			
 			SDL_UpdateWindowSurface(window);
 			SDL_Delay(delay);
+			return true;
 		}
-
 		SDL_DestroyWindow(window);
 		SDL_Quit();
-	}
-	return true;
+		return true;
  }

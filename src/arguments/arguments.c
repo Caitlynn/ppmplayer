@@ -13,7 +13,7 @@ int validateArguments(Arguments *args, int argc, char **argv){
 		return false;
 	} 
 
-	args->delay = argv[1];
+	args->delay = (unsigned int)argv[1];
 
 	const struct option long_options[] = {
 		{ "brightness", 1, NULL, 'b'},

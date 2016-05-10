@@ -4,7 +4,7 @@
 #include "headerRead.h"
 
 int headerRead(FILE *ppmFile, Header *header){
-	int colourDepth = 0;
+	int *colourDepth = NULL;
 	if (feof(ppmFile)){
 		return false;
 	} else {
