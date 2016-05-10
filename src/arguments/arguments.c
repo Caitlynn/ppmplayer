@@ -9,7 +9,7 @@
 int validateArguments(Arguments *args, int argc, char **argv){
 	/*validate the number of the arguments*/
 	//@todo: argc should less than 7
-	if (argc < 1){
+	if (argc == 5){
 		fprintf(stderr, "Please enter correct arguments!\n");
 		return false;
 	} 
@@ -37,5 +37,5 @@ int validateArguments(Arguments *args, int argc, char **argv){
 	// 			break;
 	// 	}
 	// }
-	// return true;
+	return true;
 }
