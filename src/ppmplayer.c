@@ -10,36 +10,26 @@
 int main(int argc, char *argv[]){
 	Arguments args = {
 		.delay = 0,
-		.brightness = NULL,
-		.contrast = NULL,
-		.saturation = NULL
+		.brightness = 0,
+		.contrast = 0,
+		.saturation = 0
 	};
 
 	if (!validateArguments(&args, argc, argv)){
 		return false;
 	}
-	
-	FILE *ppmFile;
-	if (fscanf(stdin, ppmFile) == 0){
-		return false;
-	}
 
 	Header ppmFileHeader = {
 		.width = 0,
-		.height =0
+		.height = 0
 	};
-	int resultHeader = headerRead(ppmFile, &ppmFileHeader);
+	int resultHeader = headerRead(stdin, &ppmFileHeader);
 	if (!resultHeader) {
 		return false;
 	}
 
-	Frame frame = {
-		.height = ppmFileHeader.height,
-		.width = ppmFileHeader.width,
-		.framedata = NULL
-	};
-	int resultFrame = readFile(ppmFile, frame);
-	if (!resultFrame){
+	int resultWindow = makeWindow(stdin, ppmFileHeader.width, ppmFileHeader.height, args.delay);
+	if (!resultWindow){
 		return false;
 	}
 

@@ -21,20 +21,17 @@ int readFiles(FILE *file, Frame *frame){
 	}
 	
 	//read the '-1' at the end of the ppm file
-	int seperator;
-	fread(seperator, sizeof(int), 1, file);
+	// int seperator = 0;
+	// fread(seperator, sizeof(int), 1, file);
 
-	if (seperator == EOF){
-		fprintf(stderr, "unexpected eof\n");
-		return false;
-	}
+	// if (seperator == EOF){
+	// 	fprintf(stderr, "unexpected eof\n");
+	// 	return false;
+	// }
 
-	if (seperator != -1){
-		fprintf(stderr, "the ppm file didn't end with '-1'\n");
-		return false;
-	}
-	return true;
-
-
-	
+	// if (seperator != -1){
+	// 	fprintf(stderr, "the ppm file didn't end with '-1'\n");
+	// 	return false;
+	// }
+	// return true;
 }

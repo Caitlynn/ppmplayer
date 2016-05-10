@@ -37,7 +37,7 @@ int setpixel(unsigned int SCREEN_WIDTH, unsigned int SCREEN_HEIGHT) {
           	/* Make p point to the place we want to draw the pixel */      
 			int x = 10;
 			int y = 20;
-			int *p = (int *)screenSurface->pixels + y * screenSurface->pitch + x * screenSurface->format->BytesPerPixel;            
+			int *p = screenSurface->pixels + y * screenSurface->pitch + x * screenSurface->format->BytesPerPixel;            
 
 			/* Draw the pixel! */     
 

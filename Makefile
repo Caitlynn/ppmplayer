@@ -11,13 +11,13 @@ all: $(program)
 debug: setdebug $(program)
 
 $(program): $(obj)
-	gcc -o $@ $^ 
+	gcc -o $@ $^ $(SDLLIBS)
 
 %.o: %.c %.h
-	gcc -c $< -o $@ $(flags) $(CFLAGS) $(SDLLIBS)
+	gcc -c $< -o $@ $(flags) $(CFLAGS) 
 
 %.o: %.c
-	gcc -c $< -o $@ $(flags) $(CFLAGS) $(SDLLIBS)
+	gcc -c $< -o $@ $(flags) $(CFLAGS) 
 
 clean:
 	@find src/ -type f -name '*.o' -delete

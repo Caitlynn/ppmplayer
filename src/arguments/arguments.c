@@ -16,9 +16,9 @@ int validateArguments(Arguments *args, int argc, char **argv){
 	args->delay = argv[1];
 
 	const struct option long_options[] = {
-		{ 1, NULL, 'b'},
-		{ 1, NULL, 'c'},
-		{ 1, NULL, 's'}
+		{ "brightness", 1, NULL, 'b'},
+		{ "contrast", 1, NULL, 'c'},
+		{ "saturation", 1, NULL, 's'}
 	};
 	int indexptr;
 	int arg;
