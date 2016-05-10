@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "makeWindow.h"
 
 int makeWindow(FILE *file, unsigned int Screen_width, unsigned int Screen_height, unsigned int delay){
@@ -39,7 +39,7 @@ int makeWindow(FILE *file, unsigned int Screen_width, unsigned int Screen_height
 
 			size_t pixels = Screen_width*Screen_height;
 			for (int i=0; i<pixels*4; i++){
-				if (i%3 ==0){
+				if (i % 3 == 0){
 					((unsigned char*)(screenSurface->pixels))[i] = 255;
 				}
 				else{
