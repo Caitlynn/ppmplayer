@@ -8,7 +8,7 @@ int headerRead(FILE *ppmFile, Header *header){
 	if (feof(ppmFile)){
 		return false;
 	} else {
-		if (fscanf(ppmFile, "P6 %zd %zd %d", &(header->width), &(header->height), &colourDepth) != 3){
+		if (fscanf(ppmFile, "P6 %d %d %d", &(header->width), &(header->height), &colourDepth) != 3){
 			printf("%d %d \n", header->width, header->height);
 			fprintf(stderr, "couldn't read the header\n");
 			return false;
