@@ -5,7 +5,7 @@
 #include "ppmplayer.h"
 #include <stdio.h>
 #include <stdbool.h>
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 int main(int argc, char *argv[]){
 	Arguments args = {
@@ -16,22 +16,44 @@ int main(int argc, char *argv[]){
 	};
 
 	if (!validateArguments(&args, argc, argv)){
-		return false;
+		return 1;
 	}
 
-	Header ppmFileHeader = {
+	if (SDL_Init(SDL_INIT_VIDEO) < 0){
+		printf("SDL couldn't initialize! SDL_Error: %s\n", SDL_GetError());
+		return 1;
+	}
+
+	SDL_Window *window = NULL;
+
+	while (!feof(stdin)){
+		Header ppmFileHeader = {
 		.width = 0,
 		.height = 0
-	};
-	int resultHeader = headerRead(stdin, &ppmFileHeader);
-	if (!resultHeader) {
-		return false;
+		};
+		int resultHeader = headerRead(stdin, &ppmFileHeader);
+		if (!resultHeader) {
+			return 1;
+		}
+
+		int resultWindow = makeWindow(&window, stdin, ppmFileHeader.width, ppmFileHeader.height);
+		if (!resultWindow){
+			return 1;
+		}
+		SDL_Delay(args.delay); // wait input delay milliseconds
+
+		//read the -1 at the end of the frame
+		if (!feof(stdin)){
+			int seperator;
+			if (fread(&seperator, sizeof(int), 1, stdin) != 1){
+				fprintf(stderr, "Couldn't read the last character\n");
+				return false;
+			}
+		}
 	}
 
-	int resultWindow = makeWindow(stdin, ppmFileHeader.width, ppmFileHeader.height, args.delay);
-	if (!resultWindow){
-		return false;
-	}
+	SDL_DestroyWindow(window);
+	SDL_Quit();	
 
-	return true;
+	return 0;
 }
