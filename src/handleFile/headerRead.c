@@ -4,12 +4,10 @@
 #include "headerRead.h"
 
 int headerRead(FILE *ppmFile, Header *header){
-	int colourDepth = 0;
 	if (feof(ppmFile)){
 		return false;
 	} else {
-		if (fscanf(ppmFile, "P6 %d %d %d", &(header->width), &(header->height), &colourDepth) != 3){
-			printf("%d %d \n", header->width, header->height);
+		if (fscanf(ppmFile, "P6\n%d %d\n255\n", &(header->width), &(header->height)) != 2){
 			fprintf(stderr, "couldn't read the header\n");
 			return false;
 		}
