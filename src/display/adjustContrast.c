@@ -1,3 +1,15 @@
+/*H**********************************************************************
+* FILENAME : adjustContrast.c    
+*
+* DESCRIPTION :
+*       apply adjustment to the input pixel according to the input contrast requirement
+*
+* PUBLIC FUNCTIONS :
+*       int adjustContrast(unsigned int contrast, Pixel *pixel)
+* 
+* AUTHOR :    Caitlynn Zhou        START DATE :    20 April 2016
+*
+*H*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

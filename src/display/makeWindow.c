@@ -1,3 +1,17 @@
+/*H**********************************************************************
+* FILENAME : makeWindow.c
+*
+* DESCRIPTION :
+*      	take a window, a file, screen width and height, also the brightness, contrast and saturation values
+*		read the colour value from the file, then make a window with input width and height to display the frame
+*		if the brightness, contrast and saturation values are not 50 then calling the corresponding functions to apply the adjustment
+*
+* PUBLIC FUNCTIONS :
+*       int makeWindow(SDL_Window **window, FILE *file, unsigned int Screen_width, unsigned int Screen_height, Arguments *arguments){
+* 
+* AUTHOR :    Caitlynn Zhou        START DATE :    20 April 2016
+*
+*H*/
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>

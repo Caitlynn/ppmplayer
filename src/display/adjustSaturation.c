@@ -1,3 +1,15 @@
+/*H**********************************************************************
+* FILENAME : adjustSaturation.c    
+*
+* DESCRIPTION :
+*       apply adjustment to the input pixel according to the input saturation requirement
+*
+* PUBLIC FUNCTIONS :
+*       int adjustSaturation(unsigned int saturation, Pixel *pixel)
+* 
+* AUTHOR :    Caitlynn Zhou        START DATE :    20 April 2016
+*
+*H*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

@@ -1,3 +1,16 @@
+/*H**********************************************************************
+* FILENAME : ppmplayer.c   
+*
+* DESCRIPTION :
+*       the main function of the whole program
+*		ordering and calling the functions from other files and make the whole program work
+*
+* PUBLIC FUNCTIONS :
+*       int main(int argc, char *argv[])
+* 
+* AUTHOR :    Caitlynn Zhou        START DATE :    20 April 2016
+*
+*H*/
 #include "handleFile/headerRead.h"
 #include "arguments/arguments.h"
 #include "handleFile/headerRead.h"

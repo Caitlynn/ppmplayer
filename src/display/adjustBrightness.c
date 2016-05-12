@@ -1,3 +1,15 @@
+/*H**********************************************************************
+* FILENAME : adjustBrightness.c    
+*
+* DESCRIPTION :
+*       apply adjustment to the input pixel according to the input brightness requirement
+*
+* PUBLIC FUNCTIONS :
+*       int adjustBrightness(unsigned int brightness, Pixel *pixel)
+* 
+* AUTHOR :    Caitlynn Zhou        START DATE :    20 April 2016
+*
+*H*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
