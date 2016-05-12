@@ -4,35 +4,16 @@
 #include "adjustContrast.h"
 
 int adjustContrast(unsigned int contrast, Pixel *pixel){
-	unsigned int adjust = contrast - 50;
-	// printf("%d\n", adjust);
-	float f;
-	f = (259 * ((float)adjust + 255))/(255 * (259 - (float)adjust));
-	printf("%e\n", f);
-	// printf("original pixel: %d %d %d\n", pixel->red, pixel->green, pixel->blue);
-	pixel->red = f * ((float)pixel->red - 128) + 128;
-	pixel->green = f * ((float)pixel->green - 128) + 128;
-	pixel->blue = f * ((float)pixel->blue - 128) + 128;
-	// printf("adjusted pixel: %d %d %d\n", pixel->red, pixel->green, pixel->blue);
+	double adjust = (double)(((double)contrast - 50) * 2) / 100 * 128;
+	// printf("%e\n", adjust);
+	double f;
 
-	if(pixel->red < 0){
-		pixel->red = 0;
-	} else if(pixel->red >255){
-		pixel->red = 255;
-	}
+	//because here f can be negative or over 255 so using fmax and fmin to put the value in between
+	f = (259 * (adjust + 255))/(255 * (259 - adjust));
 
-	if(pixel->green < 0){
-		pixel->green = 0;
-	} else if(pixel->green >255){
-		pixel->green = 255;
-	}
-
-	if(pixel->blue < 0){
-		pixel->blue = 0;
-	} else if(pixel->blue >255){
-		pixel->blue = 255;
-	}
-
+	pixel->red = (unsigned char)fmin(fmax((f * ((double)pixel->red - 128) + 128),0),255);
+	pixel->green = (unsigned char)fmin(fmax((f * ((double)pixel->green - 128) + 128),0),255);
+	pixel->blue = (unsigned char)fmin(fmax((f * ((double)pixel->blue - 128) + 128),0),255);
 
 	return true;
 }
