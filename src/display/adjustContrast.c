@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 #include "adjustContrast.h"
 
 int adjustContrast(unsigned int contrast, Pixel *pixel){
 	double adjust = (double)(((double)contrast - 50) * 2) / 100 * 128;
-	// printf("%e\n", adjust);
 	double f;
 
 	//because here f can be negative or over 255 so using fmax and fmin to put the value in between

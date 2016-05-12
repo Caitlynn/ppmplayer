@@ -1,9 +1,10 @@
-#ifndef HSV2RGB_H
-#define HSV2RGB_H
+#ifndef HSVRGB_H
+#define HSVRGB_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "rgb2hsv.h"
+
+
 
 typedef struct HsvColour{
 	unsigned char h;
@@ -11,5 +12,10 @@ typedef struct HsvColour{
 	unsigned char v;
 } HsvColour;
 
-RgbColour hsv2rgb(HsvColour hsv);
+typedef struct RgbColour{
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
+} RgbColour;
+
 #endif

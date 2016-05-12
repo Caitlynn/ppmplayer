@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <SDL2/SDL.h>
 #include "makeWindow.h"
+#include "adjustBrightness.h"
+#include "adjustContrast.h"
 
 int makeWindow(SDL_Window **window, FILE *file, unsigned int Screen_width, unsigned int Screen_height, Arguments *arguments){
 	

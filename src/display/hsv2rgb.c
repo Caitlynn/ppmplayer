@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include "hsv2rgb.h"
-#include "rgb2hsv.h"
+#include "rgbhsv.h"
 
 RgbColour hsv2rgb(HsvColour hsv){
 	RgbColour rgb;

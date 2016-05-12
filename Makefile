@@ -1,9 +1,9 @@
 program=ppmplayer
-flags=-Wall -std=c99
+flags=-Wall -std=c99 
 src=$(shell find src -name "*.c")
 obj=$(src:.c=.o)
 CFLAGS=`sdl2-config --cflags`
-SDLLIBS=`sdl2-config --libs`
+LFLAGS=`sdl2-config --libs` -lm
 
 
 all: $(program)
@@ -11,7 +11,7 @@ all: $(program)
 debug: setdebug $(program)
 
 $(program): $(obj)
-	gcc -o $@ $^ $(SDLLIBS)
+	gcc -o $@ $^ $(LFLAGS)
 
 %.o: %.c %.h
 	gcc -c $< -o $@ $(flags) $(CFLAGS) 

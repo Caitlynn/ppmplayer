@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "rgb2hsv.h"
-#include "hsv2rgb.h"
+#include "rgbhsv.h"
 
 
 HsvColour rgb2hsv(RgbColour rgb){
@@ -20,7 +19,7 @@ HsvColour rgb2hsv(RgbColour rgb){
         return hsv;
     }
 
-    hsv.s = 255 * long(rgbMax - rgbMin) / hsv.v;
+    hsv.s = 255 * (rgbMax - rgbMin) / hsv.v;
     if (hsv.s == 0)
     {
         hsv.h = 0;

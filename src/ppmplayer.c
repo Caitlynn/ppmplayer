@@ -42,7 +42,6 @@ int main(int argc, char *argv[]){
 			return 1;
 		}
 		SDL_Delay(args.delay); // wait input delay milliseconds
-
 		//read the -1 at the end of the frame
 		if (!feof(stdin)){
 			int seperator;
