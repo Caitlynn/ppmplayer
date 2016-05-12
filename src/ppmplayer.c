@@ -4,6 +4,7 @@
 #include "display/makeWindow.h"
 #include "ppmplayer.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 
@@ -36,7 +37,7 @@ int main(int argc, char *argv[]){
 			return 1;
 		}
 
-		int resultWindow = makeWindow(&window, stdin, ppmFileHeader.width, ppmFileHeader.height);
+		int resultWindow = makeWindow(&window, stdin, ppmFileHeader.width, ppmFileHeader.height, &args);
 		if (!resultWindow){
 			return 1;
 		}

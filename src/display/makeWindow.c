@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <SDL2/SDL.h>
 #include "makeWindow.h"
 
-int makeWindow(SDL_Window **window, FILE *file, unsigned int Screen_width, unsigned int Screen_height){
+int makeWindow(SDL_Window **window, FILE *file, unsigned int Screen_width, unsigned int Screen_height, Arguments *arguments){
 	
 	if (*window == NULL) {
 		*window = SDL_CreateWindow("ppm player", 
@@ -40,13 +41,35 @@ int makeWindow(SDL_Window **window, FILE *file, unsigned int Screen_width, unsig
 			const int b = 0;
 		#endif
 
+		Pixel pixel = {
+			.red = colour[r],
+			.green = colour[g],
+			.blue = colour[b]
+		};
+
+		if (arguments->brightness != 50){
+			int adjustresult = adjustBrightness(arguments->brightness, &pixel);
+			if(!adjustresult){
+				fprintf(stderr, "Couldn't apply brightness properly!\n");
+				return false;
+			}
+		}
+
+		if (arguments->contrast != 50){
+			int adjustresult = adjustContrast(arguments->contrast, &pixel);
+			if(!adjustresult){
+				fprintf(stderr, "Couldn't apply contrast properly!\n");
+				return false;
+			}
+		}
+
 		// write the colour into the memory according to the byteorder
-		((unsigned char *)(screenSurface->pixels))[i*sizeof(Uint32)]  = colour[r];
-		((unsigned char *)(screenSurface->pixels))[i*sizeof(Uint32)+1]  = colour[g];
-		((unsigned char *)(screenSurface->pixels))[i*sizeof(Uint32)+2]  = colour[b];
+		((unsigned char *)(screenSurface->pixels))[i*sizeof(Uint32)]  = pixel.red;
+		((unsigned char *)(screenSurface->pixels))[i*sizeof(Uint32)+1]  = pixel.green;
+		((unsigned char *)(screenSurface->pixels))[i*sizeof(Uint32)+2]  = pixel.blue;
 		((unsigned char *)(screenSurface->pixels))[i*sizeof(Uint32)+3]  = 255;
 
-	}
+	}	
 	SDL_UpdateWindowSurface(*window); // todo catch errors
 
 	return true;
