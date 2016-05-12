@@ -5,6 +5,7 @@
 #include "makeWindow.h"
 #include "adjustBrightness.h"
 #include "adjustContrast.h"
+#include "adjustSaturation.h"
 
 int makeWindow(SDL_Window **window, FILE *file, unsigned int Screen_width, unsigned int Screen_height, Arguments *arguments){
 	
@@ -61,6 +62,14 @@ int makeWindow(SDL_Window **window, FILE *file, unsigned int Screen_width, unsig
 			int adjustresult = adjustContrast(arguments->contrast, &pixel);
 			if(!adjustresult){
 				fprintf(stderr, "Couldn't apply contrast properly!\n");
+				return false;
+			}
+		}
+
+		if (arguments->saturation != 50){
+			int adjustresult = adjustSaturation(arguments->saturation, &pixel);
+			if(!adjustresult){
+				fprintf(stderr, "Couldn't apply saturation properly!\n");
 				return false;
 			}
 		}
